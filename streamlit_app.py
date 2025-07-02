@@ -17,48 +17,50 @@ st.write(
 # reruns (e.g. if the user interacts with the widgets).
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data/movies_genres_summary.csv")
+    df = pd.read_csv("data/cholesterol.csv")
+    df["date"] = pd.to_datetime(df["date"])  # Convert 'date' column to datetime
     return df
-
 
 df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
-genres = st.multiselect(
-    "Genres",
-    df.genre.unique(),
-    ["Action", "Adventure", "Biography", "Comedy", "Drama", "Horror"],
+types = st.multiselect(
+    "Types",
+    df.type.unique(),
+    ["Total Cholesterol", "Triglycerides"],
 )
 
-# Show a slider widget with the years using `st.slider`.
-years = st.slider("Years", 1986, 2006, (2000, 2016))
+print(df["date"].min(), df["date"].max())
+date_range = st.date_input("Date range", [df["date"].min(), df["date"].max()])
 
 # Filter the dataframe based on the widget input and reshape it.
-df_filtered = df[(df["genre"].isin(genres)) & (df["year"].between(years[0], years[1]))]
+df_filtered = df[
+    (df["type"].isin(types)) &
+    (df["date"].between(pd.Timestamp(date_range[0]), pd.Timestamp(date_range[1])))
+]
 df_reshaped = df_filtered.pivot_table(
-    index="year", columns="genre", values="gross", aggfunc="sum", fill_value=0
+    index="date", columns="type", values="value", aggfunc="sum", fill_value=0
 )
-df_reshaped = df_reshaped.sort_values(by="year", ascending=False)
+df_reshaped = df_reshaped.sort_values(by="date", ascending=False)
 
 
 # Display the data as a table using `st.dataframe`.
 st.dataframe(
     df_reshaped,
     use_container_width=True,
-    column_config={"year": st.column_config.TextColumn("Year")},
 )
 
 # Display the data as an Altair chart using `st.altair_chart`.
 df_chart = pd.melt(
-    df_reshaped.reset_index(), id_vars="year", var_name="genre", value_name="gross"
+    df_reshaped.reset_index(), id_vars="date", var_name="type", value_name="value"
 )
 chart = (
     alt.Chart(df_chart)
     .mark_line()
     .encode(
-        x=alt.X("year:N", title="Year"),
-        y=alt.Y("gross:Q", title="Gross earnings ($)"),
-        color="genre:N",
+        x=alt.X("date:T", title="Date"),
+        y=alt.Y("value:Q", title="mg/dL"),
+        color="type:N",
     )
     .properties(height=320)
 )
