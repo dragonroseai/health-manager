@@ -52,7 +52,8 @@ chart = (
     .encode(
         x=alt.X("Date:T"), # axis=alt.Axis(format="%Y-%m-%d")
         y=alt.Y("Value:Q"),
-        color="Type:N",
+        #color="Type:N",
+        color=alt.Color("Type:N", legend=alt.Legend(orient="bottom")),  # Legend at bottom
     )
     .properties(height=320)
 )
