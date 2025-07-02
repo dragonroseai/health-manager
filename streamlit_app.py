@@ -27,7 +27,7 @@ df = load_data()
 types = st.multiselect(
     "Types",
     df.type.unique(),
-    ["Total Cholesterol", "Triglycerides"],
+    ["Total Cholesterol", "Triglycerides", "HDL", "LDL", "TC-HDL", "TC/HDL"],
 )
 
 print(df["date"].min(), df["date"].max())
