@@ -106,24 +106,24 @@ if submitted:
         values = new_value.split(" ")
         new_date = pd.to_datetime(new_date)
         if new_type == "Weight":
-            weight = { "Date": new_date, "Type": "Weight", "Value": float(values[0]) }
+            weight = { "Date": new_date, "Type": "Weight", "Value": float(values[0]), "Note": new_note }
             # BMI = weight in lbs x 703 / (height in inches)^2
-            bmi = { "Date": new_date, "Type": "BMI", "Value": float(values[0])*703 / (5*12+6)**2 }
+            bmi = { "Date": new_date, "Type": "BMI", "Value": float(values[0])*703 / (5*12+6)**2, "Note": new_note }
             df = pd.concat([df, pd.DataFrame([weight, bmi])], ignore_index=True)
         elif new_type == "Cholesterol Triglycerides HDL LDL":
-            cholesterol = { "Date": new_date, "Type": "Cholesterol", "Value": float(values[0]) }
-            triglycerides = { "Date": new_date, "Type": "Triglycerides", "Value": float(values[1]) }
-            hdl = { "Date": new_date, "Type": "HDL", "Value": float(values[2]) }
-            ldl = { "Date": new_date, "Type": "LDL", "Value": float(values[3]) }
-            tc_hdl = { "Date": new_date, "Type": "TC-HDL", "Value": float(values[0])-float(values[2]) }
-            tc_hdl_ratio = { "Date": new_date, "Type": "TC/HDL", "Value": float(values[0])/float(values[2]) }
+            cholesterol = { "Date": new_date, "Type": "Cholesterol", "Value": float(values[0]), "Note": new_note }
+            triglycerides = { "Date": new_date, "Type": "Triglycerides", "Value": float(values[1]), "Note": new_note }
+            hdl = { "Date": new_date, "Type": "HDL", "Value": float(values[2]), "Note": new_note }
+            ldl = { "Date": new_date, "Type": "LDL", "Value": float(values[3]), "Note": new_note }
+            tc_hdl = { "Date": new_date, "Type": "TC-HDL", "Value": float(values[0])-float(values[2]), "Note": new_note }
+            tc_hdl_ratio = { "Date": new_date, "Type": "TC/HDL", "Value": float(values[0])/float(values[2]), "Note": new_note }
             df = pd.concat([df, pd.DataFrame([cholesterol, triglycerides, hdl, ldl, tc_hdl, tc_hdl_ratio])], ignore_index=True)
         elif new_type == "Glucose Ketones":
-            glucose = { "Date": new_date, "Type": "Glucose", "Value": float(values[0]) }
-            ketones = { "Date": new_date, "Type": "Ketones", "Value": float(values[1]) }
+            glucose = { "Date": new_date, "Type": "Glucose", "Value": float(values[0]), "Note": new_note }
+            ketones = { "Date": new_date, "Type": "Ketones", "Value": float(values[1]), "Note": new_note }
             df = pd.concat([df, pd.DataFrame([glucose, ketones])], ignore_index=True)
         else:
-            value = { "Date": new_date, "Type": new_type, "Value": float(values[0]) }
+            value = { "Date": new_date, "Type": new_type, "Value": float(values[0]), "Note": new_note }
             df = pd.concat([df, pd.DataFrame([value])], ignore_index=True)
     except ValueError:
         st.error(f"Invalid value(s): {new_value}. Please enter valid number(s).")
