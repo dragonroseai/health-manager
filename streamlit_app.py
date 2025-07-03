@@ -2,6 +2,37 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
+# --- Simple authentication setup ---
+def check_password():
+    if "authenticated" not in st.session_state:
+        st.session_state["authenticated"] = False
+
+    if st.session_state["authenticated"]:
+        return True
+
+    with st.form("Login"):
+        st.write("Please log in to access the Health Manager.")
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Login")
+        if submitted:
+            # Simple hardcoded credentials (replace with secure method in production)
+            if (username == "hiangswee" and password == "health21") \
+                or (username == "khinfoun" and password == "health21"):
+                st.session_state["authenticated"] = True
+                st.session_state["username"] = username
+                st.success("Login successful!")
+                print(st.session_state)
+                st.rerun()
+            else:
+                st.error("Invalid username or password.")
+    return False
+
+if not check_password():
+    st.stop()
+#st.session_state["username"] = "hiangswee"  # Default username for demo purposes
+# --- End authentication setup ---
+
 # Show the page title and description.
 st.set_page_config(page_title="Health Manager", page_icon="❤️")
 st.title("Health Manager ❤️")
@@ -15,18 +46,28 @@ st.write(
 # reruns (e.g. if the user interacts with the widgets).
 #@st.cache_data
 def load_data():
-    df = pd.read_csv("data/health_data.csv")
+    df = pd.read_csv(f"data/{st.session_state['username']}/health_data.csv")
     df["Date"] = pd.to_datetime(df["Date"])  # Convert 'date' column to datetime
     return df
 
 df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
-types = st.multiselect(
-    "Types",
-    df.Type.unique(),
-    ["Weight", "BMI", "Cholesterol", "Triglycerides", "HDL", "LDL", "TC-HDL", "TC/HDL"], # Default selection
+df_pivot = df.pivot_table(
+    index="Date", columns="Type", values="Value", aggfunc="sum", fill_value=0
 )
+selected = []
+if "Weight" in df_pivot.columns: selected += ["Weight"]
+if "BMI" in df_pivot.columns: selected += ["BMI"]
+if "Cholesterol" in df_pivot.columns: selected += ["Cholesterol"]
+if "Triglycerides" in df_pivot.columns: selected += ["Triglycerides"]
+if "HDL" in df_pivot.columns: selected += ["HDL"]
+if "LDL" in df_pivot.columns: selected += ["LDL"]
+if "TC-HDL" in df_pivot.columns: selected += ["TC-HDL"]
+if "TC/HDL" in df_pivot.columns: selected += ["TC/HDL"]
+if "Glucose" in df_pivot.columns: selected += ["Glucose"]
+if "Ketones" in df_pivot.columns: selected += ["Ketones"]
+types = st.multiselect("Types", df.Type.unique(), selected)
 
 col1, col2 = st.columns(2)
 with col1: start_date = st.date_input("Start date", df["Date"].min())
@@ -128,6 +169,6 @@ if submitted:
             df = pd.concat([df, pd.DataFrame([value])], ignore_index=True)
     except ValueError:
         st.error(f"Invalid value(s): {new_value}. Please enter valid number(s).")
-    df.to_csv("data/health_data.csv", index=False)  # Save updated DataFrame to CSV
+    df.to_csv(f"data/{st.session_state['username']}/health_data.csv", index=False)  # Save updated DataFrame to CSV
     st.success("New data added!")
     
