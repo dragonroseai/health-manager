@@ -1,4 +1,5 @@
 import altair as alt
+import datetime as dt
 import pandas as pd
 import streamlit as st
 
@@ -54,38 +55,43 @@ df = load_data()
 
 # Show a multiselect widget with the genres using `st.multiselect`.
 df_pivot = df.pivot_table(
-    index="Date", columns="Type", values="Value", aggfunc="sum", fill_value=0
+    index="Date", columns="Name", values="Value", aggfunc="sum", fill_value=0
 )
 selected = []
 if "Weight" in df_pivot.columns: selected += ["Weight"]
-if "BMI" in df_pivot.columns: selected += ["BMI"]
+# if "BMI" in df_pivot.columns: selected += ["BMI"]
 if "Cholesterol" in df_pivot.columns: selected += ["Cholesterol"]
 if "Triglycerides" in df_pivot.columns: selected += ["Triglycerides"]
 if "HDL" in df_pivot.columns: selected += ["HDL"]
 if "LDL" in df_pivot.columns: selected += ["LDL"]
-if "TC-HDL" in df_pivot.columns: selected += ["TC-HDL"]
-if "TC/HDL" in df_pivot.columns: selected += ["TC/HDL"]
+# if "TC-HDL" in df_pivot.columns: selected += ["TC-HDL"]
+# if "TC/HDL" in df_pivot.columns: selected += ["TC/HDL"]
 if "Glucose" in df_pivot.columns: selected += ["Glucose"]
-if "Ketones" in df_pivot.columns: selected += ["Ketones"]
-types = st.multiselect("Types", df.Type.unique(), selected)
+# if "Ketone" in df_pivot.columns: selected += ["Ketone"]
+# selected = ["Cholesterol"]  # Default selected for demo purposes
+names = st.multiselect("Measurements", df.Name.unique(), selected)
 
 col1, col2 = st.columns(2)
-with col1: start_date = st.date_input("Start date", df["Date"].min())
-with col2: end_date = st.date_input("End date", df["Date"].max())
+with col1: 
+    #start_date = st.date_input("Start date", dt.date(2024,11,1))  # Default start date for demo purposes
+    #start_date = st.date_input("Start date", df["Date"].min())
+    start_date = st.date_input("Start date", df["Date"].max() - pd.DateOffset(years=1))
+with col2: 
+    end_date = st.date_input("End date", df["Date"].max())
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered = df[
-    (df["Type"].isin(types)) &
+    (df["Name"].isin(names)) &
     (df["Date"].between(pd.Timestamp(start_date), pd.Timestamp(end_date)))
 ]
 df_reshaped = df_filtered.pivot_table(
-    index="Date", columns="Type", values="Value", aggfunc="sum", fill_value=0
+    index="Date", columns="Name", values="Value", aggfunc="sum", fill_value=0
 )
 df_reshaped = df_reshaped.sort_values(by="Date", ascending=False)
 
 # Display the data as an Altair chart using `st.altair_chart`.
 df_chart = pd.melt(
-    df_reshaped.reset_index(), id_vars="Date", var_name="Type", value_name="Value"
+    df_reshaped.reset_index(), id_vars="Date", var_name="Name", value_name="Value"
 )
 chart = (
     alt.Chart(df_chart)
@@ -93,8 +99,7 @@ chart = (
     .encode(
         x=alt.X("Date:T"), # axis=alt.Axis(format="%Y-%m-%d")
         y=alt.Y("Value:Q"),
-        #color="Type:N",
-        color=alt.Color("Type:N", legend=alt.Legend(orient="bottom")),  # Legend at bottom
+        color=alt.Color("Name:N", legend=alt.Legend(orient="bottom")),  # Legend at bottom
     )
     .properties(height=320)
 )
@@ -117,7 +122,10 @@ if "LDL" in df_display.columns: desired_order += ["LDL"]
 if "TC-HDL" in df_display.columns: desired_order += ["TC-HDL"]
 if "TC/HDL" in df_display.columns: desired_order += ["TC/HDL"]
 if "Glucose" in df_display.columns: desired_order += ["Glucose"]
-if "Ketones" in df_display.columns: desired_order += ["Ketones"]
+if "Ketone" in df_display.columns: desired_order += ["Ketone"]
+for col in df_display.columns:
+    if col not in desired_order:
+        desired_order.append(col)  # Append any other columns that are not in the desired order
 st.dataframe(
     df_display[desired_order],
     use_container_width=True,
@@ -131,14 +139,14 @@ record_types = [
     "Triglycerides",
     "HDL",
     "LDL",
-    "Glucose Ketones",
+    "Glucose Ketone",
     "Glucose",
-    "Ketones",
+    "Ketone",
 ]
 
 with st.form("Add new record"):
     new_date = st.date_input("Date")
-    new_type = st.selectbox("Type", record_types)
+    new_type = st.selectbox("Name", record_types)
     new_value = st.text_input("Value(s)")  # String input
     new_note = st.text_input("Note (optional)")  # String input
     submitted = st.form_submit_button("Add")
@@ -148,24 +156,24 @@ if submitted:
         values = new_value.split(" ")
         new_date = pd.to_datetime(new_date)
         if new_type == "Weight":
-            weight = { "Date": new_date, "Type": "Weight", "Value": float(values[0]), "Note": new_note }
+            weight = { "Date": new_date, "Name": "Weight", "Value": float(values[0]), "Note": new_note }
             # BMI = weight in lbs x 703 / (height in inches)^2
-            bmi = { "Date": new_date, "Type": "BMI", "Value": float(values[0])*703 / (5*12+6)**2, "Note": new_note }
+            bmi = { "Date": new_date, "Name": "BMI", "Value": float(values[0])*703 / (5*12+6)**2, "Note": new_note }
             df = pd.concat([df, pd.DataFrame([weight, bmi])], ignore_index=True)
         elif new_type == "Cholesterol Triglycerides HDL LDL":
-            cholesterol = { "Date": new_date, "Type": "Cholesterol", "Value": float(values[0]), "Note": new_note }
-            triglycerides = { "Date": new_date, "Type": "Triglycerides", "Value": float(values[1]), "Note": new_note }
-            hdl = { "Date": new_date, "Type": "HDL", "Value": float(values[2]), "Note": new_note }
-            ldl = { "Date": new_date, "Type": "LDL", "Value": float(values[3]), "Note": new_note }
-            tc_hdl = { "Date": new_date, "Type": "TC-HDL", "Value": float(values[0])-float(values[2]), "Note": new_note }
-            tc_hdl_ratio = { "Date": new_date, "Type": "TC/HDL", "Value": float(values[0])/float(values[2]), "Note": new_note }
+            cholesterol = { "Date": new_date, "Name": "Cholesterol", "Value": float(values[0]), "Note": new_note }
+            triglycerides = { "Date": new_date, "Name": "Triglycerides", "Value": float(values[1]), "Note": new_note }
+            hdl = { "Date": new_date, "Name": "HDL", "Value": float(values[2]), "Note": new_note }
+            ldl = { "Date": new_date, "Name": "LDL", "Value": float(values[3]), "Note": new_note }
+            tc_hdl = { "Date": new_date, "Name": "TC-HDL", "Value": float(values[0])-float(values[2]), "Note": new_note }
+            tc_hdl_ratio = { "Date": new_date, "Name": "TC/HDL", "Value": float(values[0])/float(values[2]), "Note": new_note }
             df = pd.concat([df, pd.DataFrame([cholesterol, triglycerides, hdl, ldl, tc_hdl, tc_hdl_ratio])], ignore_index=True)
-        elif new_type == "Glucose Ketones":
-            glucose = { "Date": new_date, "Type": "Glucose", "Value": float(values[0]), "Note": new_note }
-            ketones = { "Date": new_date, "Type": "Ketones", "Value": float(values[1]), "Note": new_note }
-            df = pd.concat([df, pd.DataFrame([glucose, ketones])], ignore_index=True)
+        elif new_type == "Glucose Ketone":
+            glucose = { "Date": new_date, "Name": "Glucose", "Value": float(values[0]), "Note": new_note }
+            ketone = { "Date": new_date, "Name": "Ketone", "Value": float(values[1]), "Note": new_note }
+            df = pd.concat([df, pd.DataFrame([glucose, ketone])], ignore_index=True)
         else:
-            value = { "Date": new_date, "Type": new_type, "Value": float(values[0]), "Note": new_note }
+            value = { "Date": new_date, "Name": new_type, "Value": float(values[0]), "Note": new_note }
             df = pd.concat([df, pd.DataFrame([value])], ignore_index=True)
     except ValueError:
         st.error(f"Invalid value(s): {new_value}. Please enter valid number(s).")
