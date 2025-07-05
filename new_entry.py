@@ -2,7 +2,7 @@ import datetime as dt
 import pandas as pd
 import streamlit as st
 
-record_types = [
+entry_types = [
     "Weight",
     "Systolic Diastolic Pulse",
     "Glucose Ketone",
@@ -50,13 +50,17 @@ units = {
     "Haemoglobin": "g/dL",
 }
 
-def show():
+def show(df):
+    if "last_entry_type" not in st.session_state:
+        st.session_state["last_entry_type"] = "GE Fit Plus LN"  # Default type for new entries
+    selectbox_idx = entry_types.index(st.session_state["last_entry_type"])
+
     st.markdown("<b>New Entry</b>", unsafe_allow_html=True)
     with st.form("Add new entry"):
         cols = st.columns([1,1])
         with cols[0]: new_date = st.date_input("Date")
         with cols[1]: new_time = st.time_input("Time")  
-        new_type = st.selectbox("Name", record_types, index=8, help=selectbox_help)
+        new_type = st.selectbox("Name", entry_types, index=selectbox_idx, help=selectbox_help)
         new_value = st.text_input("Value(s)")  
         new_note = st.text_input("Note (optional)")  
         submitted = st.form_submit_button("Add")
@@ -97,10 +101,10 @@ def show():
                 body_water_pct = { "Date": new_date, "Name": "Body Water %", "Value": kvs["bdy_wtr_pct"], "Units": "%", "Note": new_note }
                 bmr = { "Date": new_date, "Name": "BMR", "Value": kvs["bmr"], "Units": units["BMR"], "Note": new_note }
                 metabolic_age = { "Date": new_date, "Name": "Metabolic Age", "Value": kvs["mtb_age"], "Units": "Year", "Note": new_note }
-                df = pd.concat([df, pd.DataFrame([weight, bmi, body_fat, body_fat_pct, subcutaneous_fat, subcutaneous_fat_pct, \
+                new_df = pd.DataFrame([weight, bmi, body_fat, body_fat_pct, subcutaneous_fat, subcutaneous_fat_pct, \
                                                 visceral_fat, visceral_fat_pct, visceral_fat_index, muscle_mass, muscle_mass_pct, \
                                                 skeletal_muscle, skeletal_muscle_pct, bone_mass, bone_mass_pct, protein, protein_pct, \
-                                                body_water, body_water_pct, bmr, metabolic_age])], ignore_index=True)   
+                                                body_water, body_water_pct, bmr, metabolic_age])   
             elif new_type == "GE CS10G Body Composition":
                 if len(values) != 17:
                     st.error("Please enter all 17 values.")
@@ -136,11 +140,11 @@ def show():
                 fat_mss_ctrl = { "Date": new_date, "Name": "Fat Mass Control", "Value": kvs["fat_mss_ctrl"], "Units": "lbs", "Note": new_note }
                 msc_ctrl = { "Date": new_date, "Name": "Muscle Control", "Value": kvs["msc_ctrl"], "Units": "lbs", "Note": new_note }
                 health_ass = { "Date": new_date, "Name": "Health Assessment", "Value": kvs["health_ass"], "Units": "Points", "Note": new_note }
-                df = pd.concat([df, pd.DataFrame([weight, bmi, body_fat, body_fat_pct, subcutaneous_fat, subcutaneous_fat_pct, \
+                new_df = pd.DataFrame([weight, bmi, body_fat, body_fat_pct, subcutaneous_fat, subcutaneous_fat_pct, \
                                                 visceral_fat, visceral_fat_pct, visceral_fat_index, muscle_mass, muscle_mass_pct, \
                                                 skeletal_muscle, skeletal_muscle_pct, bone_mass, bone_mass_pct, protein, protein_pct, \
                                                 body_water, body_water_pct, bmr, metabolic_age, \
-                                                obesity_pct, wgt_ctrl, fat_mss_ctrl, msc_ctrl, health_ass])], ignore_index=True)   
+                                                obesity_pct, wgt_ctrl, fat_mss_ctrl, msc_ctrl, health_ass]) 
             elif new_type == "GE CS10G":
                 if len(values) != 9:
                     st.error("Please enter all 9 values for Weight, Body Fat, BMI, Muscle Mass, BMR, Fat-Free Body Weight, Visceral Fat, Body Water and Bone Mass.")
@@ -161,10 +165,10 @@ def show():
                 body_water = { "Date": new_date, "Name": "Body Water", "Value": w*kvs["bdy_wtr_pct"]/100, "Units": units["Weight"], "Note": new_note }
                 body_water_pct = { "Date": new_date, "Name": "Body Water %", "Value": kvs["bdy_wtr_pct"], "Units": "%", "Note": new_note }
                 bmr = { "Date": new_date, "Name": "BMR", "Value": kvs["bmr"], "Units": units["BMR"], "Note": new_note }
-                df = pd.concat([df, pd.DataFrame([weight, bmi, body_fat, body_fat_pct, \
+                new_df = pd.DataFrame([weight, bmi, body_fat, body_fat_pct, \
                                                 visceral_fat_index, muscle_mass, muscle_mass_pct, \
                                                 bone_mass, bone_mass_pct, \
-                                                body_water, body_water_pct, bmr])], ignore_index=True)   
+                                                body_water, body_water_pct, bmr])
             elif new_type == "Fora 6 BG HT HB":
                 if len(values) != 3:
                     st.error("Please enter all 3 values for Glucose, Haematocrit, and Haemoglobin.")
@@ -174,7 +178,7 @@ def show():
                 glucose = { "Date": new_date, "Name": "Glucose", "Value": kvs["Glucose"], "Units": units["Glucose"], "Note": new_note }
                 haematocrit = { "Date": new_date, "Name": "Haematocrit", "Value": kvs["Haematocrit"], "Units": units["Haematocrit"], "Note": new_note }
                 haemoglobin = { "Date": new_date, "Name": "Haemoglobin", "Value": kvs["Haemoglobin"], "Units": units["Haemoglobin"], "Note": new_note }
-                df = pd.concat([df, pd.DataFrame([glucose, haematocrit, haemoglobin])], ignore_index=True)
+                new_df = pd.DataFrame([glucose, haematocrit, haemoglobin])
             else:
                 kvs = dict(zip(names, values))
                 rows = []
@@ -188,9 +192,13 @@ def show():
                 if "Cholesterol" in names and "HDL" in names:
                     rows.append({ "Date": new_date, "Name": "TC-HDL", "Value": kvs["TC"]-kvs["HDL"], "Units": units["Cholesterol"], "Note": new_note })
                     rows.append({ "Date": new_date, "Name": "TC/HDL", "Value": kvs["TC"]/kvs["HDL"], "Units": "", "Note": new_note })
-                df = pd.concat([df, pd.DataFrame(rows)], ignore_index=True)
-            df.to_csv(f"data/{st.session_state['username']}/health_data.csv", index=False)  # Save updated DataFrame to CSV
+                new_df = pd.DataFrame(rows)
+            if df.empty: df = new_df
+            else: df = pd.concat([df, new_df], ignore_index=True)  # Append new entries to the DataFrame
+            df.to_csv(f"data/{st.session_state['email']}/health_data.csv", index=False)  # Save updated DataFrame to CSV
             st.success("New data added!")
-            st.rerun()  # Rerun the app to reflect the change
+            st.session_state["last_entry_type"] = new_type
+            st.session_state["rerun"] = True  # Set rerun flag to True
+            #st.rerun()  # Rerun the app to reflect the change
         except ValueError:
             st.error(f"Invalid value(s): {new_value}. Please enter valid number(s).")

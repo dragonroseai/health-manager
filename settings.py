@@ -5,7 +5,7 @@ import streamlit as st
 
 def load_settings():
     try:
-        with open(f"data/{st.session_state['username']}/settings.json", "r") as f:
+        with open(f"data/{st.session_state['email']}/settings.json", "r") as f:
             settings = json.load(f)
         return settings
     except (FileNotFoundError, json.JSONDecodeError):
@@ -23,7 +23,7 @@ def show():
     if submitted:
         try:
             settings["height"] = float(height)
-            with open(f"data/{st.session_state['username']}/settings.json", "w") as f:
+            with open(f"data/{st.session_state['email']}/settings.json", "w") as f:
                 json.dump(settings, f, indent=4)
             st.success("Settings saved!")
         except ValueError:
