@@ -9,7 +9,7 @@ def check_password():
 
     if st.session_state["authenticated"]: return True
 
-    mode = st.radio("", ["Login", "Sign Up"], horizontal=True)
+    mode = st.radio(" ", ["Login", "Sign Up"], horizontal=True)
     if mode == "Login":
         login()
     elif mode == "Sign Up":
@@ -68,3 +68,4 @@ def signup():
                 pd.DataFrame(columns=["Name", "Value", "Units", "Date", "Note"]).to_csv(health_data_file, index=False)
             st.success("Account created! Please log in.")
             st.stop()
+

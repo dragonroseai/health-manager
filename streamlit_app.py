@@ -27,14 +27,15 @@ df = load_data()
 page = st.sidebar.radio(
     "Menu",
     ("Home", "New Entry", "Settings"),
-    index=0
+    index=st.session_state.get("menu_index", 0),
 )
 
 if page == "New Entry":
     settings_file = f"data/{st.session_state["email"]}/settings.json"
     if not os.path.exists(settings_file):
-        st.info("Please set your height before adding new entries.")
-        settings.show()
+        st.session_state["settings_msg"] = "Please set your height before adding new entries."
+        st.session_state["menu_index"] = 2  # Set index to Settings
+        st.rerun()
     else:
         new_entry.show(df)
     st.stop()  # Stop here so the rest of the app doesn't run

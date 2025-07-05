@@ -14,6 +14,10 @@ def load_settings():
 def show():
     settings = load_settings()
 
+    if "settings_msg" in st.session_state:
+        st.info(st.session_state["settings_msg"])
+        del st.session_state["settings_msg"]
+
     st.markdown("<b>Settings</b>", unsafe_allow_html=True)
     with st.form("Settings"):
         height = st.text_input("Height", settings["height"] if "height" in settings else "",
