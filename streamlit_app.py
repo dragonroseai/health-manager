@@ -32,7 +32,7 @@ if not check_password(): st.stop()
 # --- End authentication setup ---
 
 # Show the page title and description.
-st.set_page_config(page_title="Health Manager", page_icon="❤️")
+st.set_page_config(page_title="Health Manager", page_icon="❤️", layout="wide")
 st.title("Health Manager ❤️")
 st.write(
     """
@@ -80,23 +80,34 @@ preset_order = [
 ]
 
 # Add a row of buttons below measurement selection
-btn_cols = st.columns([1,5,1,5,1,5,1,5,1])
-with btn_cols[1]: btn1 = st.button("Weight")
-with btn_cols[3]: btn2 = st.button("Cholesterol")
-with btn_cols[5]: btn3 = st.button("Keto")
-with btn_cols[7]: btn4 = st.button("Blood Pressure")
+#btn_cols = st.columns([1,10,1,10,1,10,1,10,1])
+# btn_cols = st.columns([1,5,1,5,1,5,1,5,1])
+# with btn_cols[1]: btn1 = st.button("Weight")
+# with btn_cols[3]: btn2 = st.button("Cholesterol")
+# with btn_cols[5]: btn3 = st.button("Keto")
+# with btn_cols[7]: btn4 = st.button("Blood Pressure")
+btn_cols = st.columns([5,5,5,5,5,5])
+with btn_cols[0]: btn0 = st.button("Weight lbs")
+with btn_cols[1]: btn1 = st.button("Weight %")
+with btn_cols[2]: btn2 = st.button("Weight Etc")
+with btn_cols[3]: btn3 = st.button("Cholesterol")
+with btn_cols[4]: btn4 = st.button("Keto")
+with btn_cols[5]: btn5 = st.button("Blood Pressure")
 
 # Handle button clicks to update measurement selection
-if btn1:
-    select_measurements(["Weight", "BMI", 
-        "Body Fat", "Body Fat %", "Subcutaneous Fat", "Subcutaneous Fat %", "Visceral Fat", "Visceral Fat %", "Visceral Fat Index", 
-        "Muscle Mass", "Muscle Mass %", "Skeletal Muscle", "Skeletal Muscle %", "Bone Mass", "Bone Mass %", 
-        "Protein", "Protein %", "Body Water", "Body Water %", "BMR", "Metabolic Age"])
+if btn0:
+    select_measurements(["Weight", "Body Fat", "Subcutaneous Fat", "Visceral Fat", 
+        "Muscle Mass", "Skeletal Muscle", "Bone Mass", "Protein", "Body Water"])
+elif btn1:
+    select_measurements(["Body Fat %", "Subcutaneous Fat %", "Visceral Fat %", 
+        "Muscle Mass %", "Skeletal Muscle %", "Bone Mass %", "Protein %", "Body Water %"])
 elif btn2:
-    select_measurements(["Cholesterol", "Triglycerides", "HDL", "LDL", "TC-HDL", "TC/HDL"])
+    select_measurements(["Weight", "BMI", "Visceral Fat Index", "BMR", "Metabolic Age"])
 elif btn3:
-    select_measurements(["Glucose", "Ketone", "Dr. Boz Ratio"])
+    select_measurements(["Cholesterol", "Triglycerides", "HDL", "LDL", "TC-HDL", "TC/HDL"])
 elif btn4:
+    select_measurements(["Glucose", "Ketone", "Dr. Boz Ratio"])
+elif btn5:
     select_measurements(["Systolic", "Diastolic", "Pulse"])
 
 def select_start_date(start_date, rerun=True):
@@ -115,18 +126,21 @@ with col1:
 with col2: 
     end_date = st.date_input("End date", df["Date"].max())
 
-# Add a row of buttons below start date
-btn_cols = st.columns([1,4,1,4,1,4,1,4,1])
-with btn_cols[1]: btn1 = st.button("All Time")
-with btn_cols[3]: btn2 = st.button("Last 2 Years")
-with btn_cols[5]: btn3 = st.button("Last 1 Year")
-with btn_cols[7]: btn4 = st.button("Last 6 Months")
+btn_cols = st.columns([4,4,4,4,4,4])
+with btn_cols[0]: btn0 = st.button("All Time")
+with btn_cols[1]: btn1 = st.button("2 Years")
+with btn_cols[2]: btn2 = st.button("1 Year")
+with btn_cols[3]: btn3 = st.button("6 Months")
+with btn_cols[4]: btn4 = st.button("3 Months")
+with btn_cols[5]: btn5 = st.button("1 Month")
 
 # Handle button clicks to update start_date
-if btn1: select_start_date(df["Date"].min().date())
-elif btn2: select_start_date((df["Date"].max() - pd.DateOffset(years=2)).date())
-elif btn3: select_start_date((df["Date"].max() - pd.DateOffset(years=1)).date())
-elif btn4: select_start_date((df["Date"].max() - pd.DateOffset(months=6)).date())
+if btn0: select_start_date(df["Date"].min().date())
+elif btn1: select_start_date((df["Date"].max() - pd.DateOffset(years=2)).date())
+elif btn2: select_start_date((df["Date"].max() - pd.DateOffset(years=1)).date())
+elif btn3: select_start_date((df["Date"].max() - pd.DateOffset(months=6)).date())
+elif btn4: select_start_date((df["Date"].max() - pd.DateOffset(months=3)).date())
+elif btn5: select_start_date((df["Date"].max() - pd.DateOffset(months=1)).date())
 
 # Filter the dataframe based on the widget input and reshape it.
 df_filtered = df[
@@ -176,7 +190,7 @@ st.dataframe(
 )
 
 record_types = [
-    "Weight Bdy_Fat Skl_Msc Msc_Mss Prt BMR Sub_Fat Vis_Fat Bdy_Wtr Bon_Mss Mtb_Age",
+    #"Weight Bdy_Fat Skl_Msc Msc_Mss Prt BMR Sub_Fat Vis_Fat Bdy_Wtr Bon_Mss Mtb_Age",
     "Weight",
     "Systolic Diastolic Pulse",
     "Glucose Ketone",
@@ -185,8 +199,27 @@ record_types = [
     "Cholesterol Triglycerides HDL LDL",
     "Cholesterol",
     "Uric Acid",
-    "Glucose Haematocrit Haemoglobin",
+    "GE Fit Plus LN",
+    "GE CS10G Body Composition",
+    "GE CS10G",
+    "Fora 6 BG HT HB",
 ]
+
+selectbox_help = """
+    * Weight: Body weight in pounds
+    * Systolic Diastolic Pulse: Blood pressure mmgH and pulse in Beats/min
+    * Glucose Ketone: Blood glucose in mg/dL and ketone mmol/L
+    * Glucose: Blood glucose in mg/dL
+    * Ketone: Blood ketone in mmol/L
+    * Cholesterol Triglycerides HDL LDL: Lipid panel in mg/dL
+    * Cholesterol: Total cholesterol in mg/dL
+    * Uric Acid: Uric acid in mg/dL
+    * GE Fit Plus LN: 13-in-1 body composition (Weight, Body Fat, BMI, Skeletal Muscle, Muscle Mass, Protein, BMR, Fat-Free Body Weight, Subcutaneous Fat, Visceral Fat, Body Water, Bone Mass, Metabolic Age)
+    * GE CS10G Body Composition: 17-in-1 body composition (Weight, Body Water, Protein, Fat Mass, Bone Mass, Skeletal Muscle, Visceral Fat, Obesity, Weight Control, Fat Mass Control, Muscle Control, Health Assessment, Muscle Mass, BMR, Fat-Free Body Weight, Subcutaneous Fat, Metabolic Age)
+    * GE CS10G: 9-in-1 body composition (Weight, Body Fat, BMI, Muscle Mass, BMR, Fat-Free Body Weight, Visceral Fat, Body Water, Bone Mass)
+    * Fora 6 BG HT HB: Glucose in mg/dL, Haematocrit in %, and Haemoglobin in g/dL
+    * Enter multiple values separated by space
+"""
 
 units = {
     "Weight": "lbs",
@@ -206,9 +239,10 @@ units = {
 }
 
 with st.form("Add new record"):
-    new_date = st.date_input("Date")
-    new_time = st.time_input("Time")  
-    new_type = st.selectbox("Name", record_types)
+    cols = st.columns([1,1])
+    with cols[0]: new_date = st.date_input("Date")
+    with cols[1]: new_time = st.time_input("Time")  
+    new_type = st.selectbox("Name", record_types, index=8, help=selectbox_help)
     new_value = st.text_input("Value(s)")  
     new_note = st.text_input("Note (optional)")  
     submitted = st.form_submit_button("Add")
@@ -217,40 +251,121 @@ if submitted:
     try:
         names = new_type.split(" ")
         values = [float(v) for v in new_value.split(" ")]
-        kvs = dict(zip(names, values))
         new_date = dt.datetime.combine(new_date, new_time)  # Combine date and time
         new_date = pd.to_datetime(new_date)
-        if new_type == "Weight Bdy_Fat Skl_Msc Msc_Mss Prt BMR Sub_Fat Vis_Fat Bdy_Wtr Bon_Mss Mtb_Age":
-            if len(values) != 11:
-                st.error("Please enter all 11 values for Weight Body_Fat Skeletal_Muscle Muscle_Mass Protein BMR Subcutaneous_Fat Visceral_Fat Body_Water Bone_Mass and Metabolic_Age.")
+        if new_type == "GE Fit Plus LN":
+            if len(values) != 13:
+                st.error("Please enter all 13 values for Weight, Body Fat, BMI, Skeletal Muscle, Muscle Mass, Protein, BMR, Fat-Free Body Weight, Subcutaneous Fat, Visceral Fat, Body Water, Bone Mass and Metabolic Age.")
                 st.stop()
+            names = ["weight", "bdy_fat_pct", "bmi", "skl_msc_pct", "msc_mss", "prt_pct", 
+                     "bmr", "ff_wgt", "sub_fat_pct", "vis_fat_idx", "bdy_wtr_pct", "bon_mss", "mtb_age"]
+            kvs = dict(zip(names, values))
             # weight = body_fat + muscle_mass + bone_mass
-            weight = { "Date": new_date, "Name": "Weight", "Value": kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            bmi = { "Date": new_date, "Name": "BMI", "Value": kvs["Weight"]*703 / (5*12+6)**2, "Units": "", "Note": new_note }
-            body_fat = { "Date": new_date, "Name": "Body Fat", "Value": kvs["Bdy_Fat"]*kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            body_fat_pct = { "Date": new_date, "Name": "Body Fat %", "Value": kvs["Bdy_Fat"], "Units": "%", "Note": new_note }
-            subcutaneous_fat = { "Date": new_date, "Name": "Subcutaneous Fat", "Value": kvs["Sub_Fat"]*kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            subcutaneous_fat_pct = { "Date": new_date, "Name": "Subcutaneous Fat %", "Value": kvs["Sub_Fat"], "Units": "%", "Note": new_note }
-            visceral_fat = { "Date": new_date, "Name": "Visceral Fat", "Value": (kvs["Bdy_Fat"]-kvs["Sub_Fat"])*kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            visceral_fat_pct = { "Date": new_date, "Name": "Visceral Fat %", "Value": kvs["Bdy_Fat"]-kvs["Sub_Fat"], "Units": "%", "Note": new_note }
-            visceral_fat_index = { "Date": new_date, "Name": "Visceral Fat Index", "Value": kvs["Vis_Fat"], "Units": "", "Note": new_note }
-            muscle_mass = { "Date": new_date, "Name": "Muscle Mass", "Value": kvs["Msc_Mss"], "Units": units["Weight"], "Note": new_note }
-            muscle_mass_pct = { "Date": new_date, "Name": "Muscle Mass %", "Value": kvs["Msc_Mss"]/kvs["Weight"], "Units": "%", "Note": new_note }
-            skeletal_muscle = { "Date": new_date, "Name": "Skeletal Muscle", "Value": kvs["Skl_Msc"]*kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            skeletal_muscle_pct = { "Date": new_date, "Name": "Skeletal Muscle %", "Value": kvs["Skl_Msc"], "Units": "%", "Note": new_note }
-            bone_mass = { "Date": new_date, "Name": "Bone Mass", "Value": kvs["Bon_Mss"], "Units": units["Weight"], "Note": new_note }
-            bone_mass_pct = { "Date": new_date, "Name": "Bone Mass %", "Value": kvs["Bon_Mss"]/kvs["Weight"], "Units": "%", "Note": new_note }
-            protein = { "Date": new_date, "Name": "Protein", "Value": kvs["Prt"]*kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            protein_pct = { "Date": new_date, "Name": "Protein %", "Value": kvs["Prt"], "Units": "%", "Note": new_note }
-            body_water = { "Date": new_date, "Name": "Body Water", "Value": kvs["Bdy_Wtr"]*kvs["Weight"], "Units": units["Weight"], "Note": new_note }
-            body_water_pct = { "Date": new_date, "Name": "Body Water %", "Value": kvs["Bdy_Wtr"], "Units": "%", "Note": new_note }
-            bmr = { "Date": new_date, "Name": "BMR", "Value": kvs["BMR"], "Units": units["BMR"], "Note": new_note }
-            metabolic_age = { "Date": new_date, "Name": "Metabolic Age", "Value": kvs["Mtb_Age"], "Units": "Year", "Note": new_note }
+            w = kvs["weight"]
+            weight = { "Date": new_date, "Name": "Weight", "Value": w, "Units": units["Weight"], "Note": new_note }
+            bmi = { "Date": new_date, "Name": "BMI", "Value": w*703/(5*12+6)**2, "Units": "", "Note": new_note }
+            body_fat = { "Date": new_date, "Name": "Body Fat", "Value": w*kvs["bdy_fat_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            body_fat_pct = { "Date": new_date, "Name": "Body Fat %", "Value": kvs["bdy_fat_pct"], "Units": "%", "Note": new_note }
+            subcutaneous_fat = { "Date": new_date, "Name": "Subcutaneous Fat", "Value": w*kvs["sub_fat_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            subcutaneous_fat_pct = { "Date": new_date, "Name": "Subcutaneous Fat %", "Value": kvs["sub_fat_pct"], "Units": "%", "Note": new_note }
+            visceral_fat = { "Date": new_date, "Name": "Visceral Fat", "Value": w*(kvs["bdy_fat_pct"]-kvs["sub_fat_pct"])/100, "Units": units["Weight"], "Note": new_note }
+            visceral_fat_pct = { "Date": new_date, "Name": "Visceral Fat %", "Value": kvs["bdy_fat_pct"]-kvs["sub_fat_pct"], "Units": "%", "Note": new_note }
+            visceral_fat_index = { "Date": new_date, "Name": "Visceral Fat Index", "Value": kvs["vis_fat_idx"], "Units": "", "Note": new_note }
+            muscle_mass = { "Date": new_date, "Name": "Muscle Mass", "Value": kvs["msc_mss"], "Units": units["Weight"], "Note": new_note }
+            muscle_mass_pct = { "Date": new_date, "Name": "Muscle Mass %", "Value": 100*kvs["msc_mss"]/w, "Units": "%", "Note": new_note }
+            skeletal_muscle = { "Date": new_date, "Name": "Skeletal Muscle", "Value": w*kvs["skl_msc_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            skeletal_muscle_pct = { "Date": new_date, "Name": "Skeletal Muscle %", "Value": kvs["skl_msc_pct"], "Units": "%", "Note": new_note }
+            bone_mass = { "Date": new_date, "Name": "Bone Mass", "Value": kvs["bon_mss"], "Units": units["Weight"], "Note": new_note }
+            bone_mass_pct = { "Date": new_date, "Name": "Bone Mass %", "Value": 100*kvs["bon_mss"]/w, "Units": "%", "Note": new_note }
+            protein = { "Date": new_date, "Name": "Protein", "Value": w*kvs["prt_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            protein_pct = { "Date": new_date, "Name": "Protein %", "Value": kvs["prt_pct"], "Units": "%", "Note": new_note }
+            body_water = { "Date": new_date, "Name": "Body Water", "Value": w*kvs["bdy_wtr_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            body_water_pct = { "Date": new_date, "Name": "Body Water %", "Value": kvs["bdy_wtr_pct"], "Units": "%", "Note": new_note }
+            bmr = { "Date": new_date, "Name": "BMR", "Value": kvs["bmr"], "Units": units["BMR"], "Note": new_note }
+            metabolic_age = { "Date": new_date, "Name": "Metabolic Age", "Value": kvs["mtb_age"], "Units": "Year", "Note": new_note }
             df = pd.concat([df, pd.DataFrame([weight, bmi, body_fat, body_fat_pct, subcutaneous_fat, subcutaneous_fat_pct, \
                                               visceral_fat, visceral_fat_pct, visceral_fat_index, muscle_mass, muscle_mass_pct, \
                                               skeletal_muscle, skeletal_muscle_pct, bone_mass, bone_mass_pct, protein, protein_pct, \
                                               body_water, body_water_pct, bmr, metabolic_age])], ignore_index=True)   
+# GE CS10G Body Composition: Detailed (Weight, Body Water, Protein, Fat Mass, Bone Mass, Skeletal Muscle, Visceral Fat, Obesity, 
+# Weight Control, Fat Mass Control, Muscle Control, Health Assessment, Muscle Mass, BMR, Fat-Free Body Weight, Subcutaneous Fat, 
+# Metabolic Age)
+        elif new_type == "GE CS10G Body Composition":
+            if len(values) != 17:
+                st.error("Please enter all 17 values.")
+                st.stop()
+            names = ["weight", "bdy_wtr_pct", "prt_pct", "fat_mss_pct", "bon_mss_pct", "skl_msc", "vis_fat_idx", "obesity_pct", 
+                     "wgt_ctrl", "fat_mss_ctrl", "msc_ctrl", "health_ass", "msc_mss", "bmr", "ff_wgt", "sub_fat_pct", "mtb_age"]
+            kvs = dict(zip(names, values))
+            # weight = body_fat + muscle_mass + bone_mass
+            w = kvs["weight"]
+            weight = { "Date": new_date, "Name": "Weight", "Value": w, "Units": units["Weight"], "Note": new_note }
+            bmi = { "Date": new_date, "Name": "BMI", "Value": w*703/(5*12+6)**2, "Units": "", "Note": new_note }
+            body_fat = { "Date": new_date, "Name": "Body Fat", "Value": w*kvs["fat_mss_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            body_fat_pct = { "Date": new_date, "Name": "Body Fat %", "Value": kvs["fat_mss_pct"], "Units": "%", "Note": new_note }
+            subcutaneous_fat = { "Date": new_date, "Name": "Subcutaneous Fat", "Value": w*kvs["sub_fat_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            subcutaneous_fat_pct = { "Date": new_date, "Name": "Subcutaneous Fat %", "Value": kvs["sub_fat_pct"], "Units": "%", "Note": new_note }
+            visceral_fat = { "Date": new_date, "Name": "Visceral Fat", "Value": w*(kvs["fat_mss_pct"]-kvs["sub_fat_pct"])/100, "Units": units["Weight"], "Note": new_note }
+            visceral_fat_pct = { "Date": new_date, "Name": "Visceral Fat %", "Value": kvs["fat_mss_pct"]-kvs["sub_fat_pct"], "Units": "%", "Note": new_note }
+            visceral_fat_index = { "Date": new_date, "Name": "Visceral Fat Index", "Value": kvs["vis_fat_idx"], "Units": "", "Note": new_note }
+            muscle_mass = { "Date": new_date, "Name": "Muscle Mass", "Value": kvs["msc_mss"], "Units": units["Weight"], "Note": new_note }
+            muscle_mass_pct = { "Date": new_date, "Name": "Muscle Mass %", "Value": 100*kvs["msc_mss"]/w, "Units": "%", "Note": new_note }
+            skeletal_muscle = { "Date": new_date, "Name": "Skeletal Muscle", "Value": kvs["skl_msc"], "Units": units["Weight"], "Note": new_note }
+            skeletal_muscle_pct = { "Date": new_date, "Name": "Skeletal Muscle %", "Value": 100*kvs["skl_msc"]/w, "Units": "%", "Note": new_note }
+            bone_mass = { "Date": new_date, "Name": "Bone Mass", "Value": w*kvs["bon_mss_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            bone_mass_pct = { "Date": new_date, "Name": "Bone Mass %", "Value": kvs["bon_mss_pct"], "Units": "%", "Note": new_note }
+            protein = { "Date": new_date, "Name": "Protein", "Value": w*kvs["prt_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            protein_pct = { "Date": new_date, "Name": "Protein %", "Value": kvs["prt_pct"], "Units": "%", "Note": new_note }
+            body_water = { "Date": new_date, "Name": "Body Water", "Value": w*kvs["bdy_wtr_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            body_water_pct = { "Date": new_date, "Name": "Body Water %", "Value": kvs["bdy_wtr_pct"], "Units": "%", "Note": new_note }
+            bmr = { "Date": new_date, "Name": "BMR", "Value": kvs["bmr"], "Units": units["BMR"], "Note": new_note }
+            metabolic_age = { "Date": new_date, "Name": "Metabolic Age", "Value": kvs["mtb_age"], "Units": "Year", "Note": new_note }
+            obesity_pct = { "Date": new_date, "Name": "Obesity %", "Value": kvs["obesity_pct"], "Units": "%", "Note": new_note }
+            wgt_ctrl = { "Date": new_date, "Name": "Weight Control", "Value": kvs["wgt_ctrl"], "Units": "lbs", "Note": new_note }
+            fat_mss_ctrl = { "Date": new_date, "Name": "Fat Mass Control", "Value": kvs["fat_mss_ctrl"], "Units": "lbs", "Note": new_note }
+            msc_ctrl = { "Date": new_date, "Name": "Muscle Control", "Value": kvs["msc_ctrl"], "Units": "lbs", "Note": new_note }
+            health_ass = { "Date": new_date, "Name": "Health Assessment", "Value": kvs["health_ass"], "Units": "Points", "Note": new_note }
+            df = pd.concat([df, pd.DataFrame([weight, bmi, body_fat, body_fat_pct, subcutaneous_fat, subcutaneous_fat_pct, \
+                                              visceral_fat, visceral_fat_pct, visceral_fat_index, muscle_mass, muscle_mass_pct, \
+                                              skeletal_muscle, skeletal_muscle_pct, bone_mass, bone_mass_pct, protein, protein_pct, \
+                                              body_water, body_water_pct, bmr, metabolic_age, \
+                                              obesity_pct, wgt_ctrl, fat_mss_ctrl, msc_ctrl, health_ass])], ignore_index=True)   
+        elif new_type == "GE CS10G":
+            if len(values) != 9:
+                st.error("Please enter all 9 values for Weight, Body Fat, BMI, Muscle Mass, BMR, Fat-Free Body Weight, Visceral Fat, Body Water and Bone Mass.")
+                st.stop()
+            names = ["weight", "bdy_fat_pct", "bmi", "msc_mss", "bmr", "ff_wgt", "vis_fat_idx", "bdy_wtr_pct", "bon_mss"]
+            kvs = dict(zip(names, values))
+            # weight = body_fat + muscle_mass + bone_mass
+            w = kvs["weight"]
+            weight = { "Date": new_date, "Name": "Weight", "Value": w, "Units": units["Weight"], "Note": new_note }
+            bmi = { "Date": new_date, "Name": "BMI", "Value": w*703/(5*12+6)**2, "Units": "", "Note": new_note }
+            body_fat = { "Date": new_date, "Name": "Body Fat", "Value": w*kvs["bdy_fat_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            body_fat_pct = { "Date": new_date, "Name": "Body Fat %", "Value": kvs["bdy_fat_pct"], "Units": "%", "Note": new_note }
+            visceral_fat_index = { "Date": new_date, "Name": "Visceral Fat Index", "Value": kvs["vis_fat_idx"], "Units": "", "Note": new_note }
+            muscle_mass = { "Date": new_date, "Name": "Muscle Mass", "Value": kvs["msc_mss"], "Units": units["Weight"], "Note": new_note }
+            muscle_mass_pct = { "Date": new_date, "Name": "Muscle Mass %", "Value": 100*kvs["msc_mss"]/w, "Units": "%", "Note": new_note }
+            bone_mass = { "Date": new_date, "Name": "Bone Mass", "Value": kvs["bon_mss"], "Units": units["Weight"], "Note": new_note }
+            bone_mass_pct = { "Date": new_date, "Name": "Bone Mass %", "Value": 100*kvs["bon_mss"]/w, "Units": "%", "Note": new_note }
+            body_water = { "Date": new_date, "Name": "Body Water", "Value": w*kvs["bdy_wtr_pct"]/100, "Units": units["Weight"], "Note": new_note }
+            body_water_pct = { "Date": new_date, "Name": "Body Water %", "Value": kvs["bdy_wtr_pct"], "Units": "%", "Note": new_note }
+            bmr = { "Date": new_date, "Name": "BMR", "Value": kvs["bmr"], "Units": units["BMR"], "Note": new_note }
+            df = pd.concat([df, pd.DataFrame([weight, bmi, body_fat, body_fat_pct, \
+                                              visceral_fat_index, muscle_mass, muscle_mass_pct, \
+                                              bone_mass, bone_mass_pct, \
+                                              body_water, body_water_pct, bmr])], ignore_index=True)   
+        elif new_type == "Fora 6 BG HT HB":
+            if len(values) != 3:
+                st.error("Please enter all 3 values for Glucose, Haematocrit, and Haemoglobin.")
+                st.stop()
+            names = ["Glucose", "Haematocrit", "Haemoglobin"]
+            kvs = dict(zip(names, values))            
+            glucose = { "Date": new_date, "Name": "Glucose", "Value": kvs["Glucose"], "Units": units["Glucose"], "Note": new_note }
+            haematocrit = { "Date": new_date, "Name": "Haematocrit", "Value": kvs["Haematocrit"], "Units": units["Haematocrit"], "Note": new_note }
+            haemoglobin = { "Date": new_date, "Name": "Haemoglobin", "Value": kvs["Haemoglobin"], "Units": units["Haemoglobin"], "Note": new_note }
+            df = pd.concat([df, pd.DataFrame([glucose, haematocrit, haemoglobin])], ignore_index=True)
         else:
+            kvs = dict(zip(names, values))
             rows = []
             for name, value in kvs.items():
                 if name not in units: units[name] = ""  # Default unit if not specified
