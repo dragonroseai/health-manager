@@ -80,17 +80,11 @@ preset_order = [
 ]
 
 # Add a row of buttons below measurement selection
-#btn_cols = st.columns([1,10,1,10,1,10,1,10,1])
-# btn_cols = st.columns([1,5,1,5,1,5,1,5,1])
-# with btn_cols[1]: btn1 = st.button("Weight")
-# with btn_cols[3]: btn2 = st.button("Cholesterol")
-# with btn_cols[5]: btn3 = st.button("Keto")
-# with btn_cols[7]: btn4 = st.button("Blood Pressure")
 btn_cols = st.columns([5,5,5,5,5,5])
 with btn_cols[0]: btn0 = st.button("Weight lbs")
 with btn_cols[1]: btn1 = st.button("Weight %")
 with btn_cols[2]: btn2 = st.button("Weight Etc")
-with btn_cols[3]: btn3 = st.button("Cholesterol")
+with btn_cols[3]: btn3 = st.button("Lipid Panel")
 with btn_cols[4]: btn4 = st.button("Keto")
 with btn_cols[5]: btn5 = st.button("Blood Pressure")
 
@@ -117,16 +111,15 @@ def select_start_date(start_date, rerun=True):
 if "start_date" not in st.session_state: 
     select_start_date((df["Date"].max() - pd.DateOffset(months=6)).date(), rerun=False)
 
-col1, col2 = st.columns(2)
-with col1: 
-    #start_date = st.date_input("Start date", dt.date(2024,11,1))  # Default start date for demo purposes
-    #start_date = st.date_input("Start date", df["Date"].min())
-    #start_date = st.date_input("Start date", df["Date"].max() - pd.DateOffset(years=1))
-    start_date = st.date_input("Start date", st.session_state["start_date"])
-with col2: 
-    end_date = st.date_input("End date", df["Date"].max())
+#start_date = st.date_input("Start date", dt.date(2024,11,1))  # Default start date for demo purposes
+#start_date = st.date_input("Start date", df["Date"].min())
+#start_date = st.date_input("Start date", df["Date"].max() - pd.DateOffset(years=1))
 
-btn_cols = st.columns([4,4,4,4,4,4])
+btn_cols = st.columns([5,5,1,5])
+with btn_cols[0]: start_date = st.date_input("Start date", st.session_state["start_date"])
+with btn_cols[1]: end_date = st.date_input("End date", df["Date"].max())
+with btn_cols[3]: st.write(""); st.write(""); show_ma = st.checkbox("1M Moving Avg")
+btn_cols = st.columns(6)
 with btn_cols[0]: btn0 = st.button("All Time")
 with btn_cols[1]: btn1 = st.button("2 Years")
 with btn_cols[2]: btn2 = st.button("1 Year")
@@ -147,13 +140,10 @@ df_filtered = df[
     (df["Name"].isin(names)) &
     (df["Date"].between(pd.Timestamp(start_date), pd.Timestamp(end_date)))
 ]
-df_reshaped = df_filtered.pivot_table(
-    index="Date", columns="Name", values="Value", aggfunc="mean"
-)
-df_reshaped = df_reshaped.sort_index().ffill()
-df_reshaped = df_reshaped.sort_values(by="Date", ascending=False)
 
 # Display the data as an Altair chart using `st.altair_chart`.
+df_reshaped = df_filtered.pivot_table(index="Date", columns="Name", values="Value", aggfunc="mean")
+df_reshaped = df_reshaped.sort_index().ffill()
 df_chart = pd.melt(
     df_reshaped.reset_index(), id_vars="Date", var_name="Name", value_name="Value"
 )
@@ -167,9 +157,27 @@ chart = (
     )
     .properties(height=600)
 )
-st.altair_chart(chart, use_container_width=True)
+# Calculate 1-month (30-day) moving average for each measurement
+df_ma = df_reshaped.rolling(window='30D', min_periods=1).mean()
+df_ma_chart = pd.melt(
+    df_ma.reset_index(), id_vars="Date", var_name="Name", value_name="Value"
+)
+ma_chart = (
+    alt.Chart(df_ma_chart)
+    .mark_line(strokeDash=[5,5], opacity=0.7)
+    .encode(
+        x=alt.X("Date:T"),
+        y=alt.Y("Value:Q"),
+        color=alt.Color("Name:N", legend=None),
+    )
+)
+if show_ma:
+    st.altair_chart(chart + ma_chart, use_container_width=True)
+else:
+    st.altair_chart(chart, use_container_width=True)
 
 # Display the data as a table using `st.dataframe`.
+df_reshaped = df_reshaped.sort_values(by="Date", ascending=False)
 df_display = df_reshaped.copy()
 df_display.index = df_display.index.strftime("%Y-%m-%d")  # Format index if 'date' is index
 df_display = df_display.reset_index()
@@ -190,7 +198,6 @@ st.dataframe(
 )
 
 record_types = [
-    #"Weight Bdy_Fat Skl_Msc Msc_Mss Prt BMR Sub_Fat Vis_Fat Bdy_Wtr Bon_Mss Mtb_Age",
     "Weight",
     "Systolic Diastolic Pulse",
     "Glucose Ketone",
@@ -287,9 +294,6 @@ if submitted:
                                               visceral_fat, visceral_fat_pct, visceral_fat_index, muscle_mass, muscle_mass_pct, \
                                               skeletal_muscle, skeletal_muscle_pct, bone_mass, bone_mass_pct, protein, protein_pct, \
                                               body_water, body_water_pct, bmr, metabolic_age])], ignore_index=True)   
-# GE CS10G Body Composition: Detailed (Weight, Body Water, Protein, Fat Mass, Bone Mass, Skeletal Muscle, Visceral Fat, Obesity, 
-# Weight Control, Fat Mass Control, Muscle Control, Health Assessment, Muscle Mass, BMR, Fat-Free Body Weight, Subcutaneous Fat, 
-# Metabolic Age)
         elif new_type == "GE CS10G Body Composition":
             if len(values) != 17:
                 st.error("Please enter all 17 values.")
