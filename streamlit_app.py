@@ -7,8 +7,8 @@ import pandas as pd
 import settings
 import streamlit as st
 
-#if not check_password(): st.stop()
-st.session_state["username"] = "hiangswee"  # Default username for demo purposes
+if not auth.check_password(): st.stop()
+#st.session_state["username"] = "hiangswee"  # Default username for demo purposes
 
 # Show the page title and description.
 st.set_page_config(page_title="Health Manager", page_icon="❤️", layout="wide")
