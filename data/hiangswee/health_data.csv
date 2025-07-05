@@ -1,223 +1,376 @@
-Name,Value,Units,Date
-Body Fat,32,%,"Apr 4, 2025"
-Diastolic,69,mmHg,"Feb 23, 2025"
-Diastolic,68,mmHg,"Feb 19, 2025"
-Diastolic,66,mmHg,"Feb 15, 2025"
-Diastolic,62,mmHg,"Feb 14, 2025"
-Diastolic,72,mmHg,"Feb 22, 2025"
-Diastolic,63,mmHg,"Feb 16, 2025"
-Glucose,90,mg/dL,"Feb 16, 2025"
-Glucose,93,mg/dL,"Feb 6, 2025"
-Glucose,77,mg/dL,"Feb 17, 2025"
-Glucose,84,mg/dL,"Feb 22, 2025"
-Glucose,79,mg/dL,"Feb 23, 2025"
-Glucose,79,mg/dL,"Feb 9, 2025"
-Glucose,75,mg/dL,"Feb 8, 2025"
-HDL,40,mg/dL,"Nov 7, 2017"
-HDL,39,mg/dL,"Feb 19, 2025"
-HDL,54,mg/dL,"Jun 19, 2025"
-HDL,39,mg/dL,"May 3, 2025"
-HDL,49,mg/dL,"Jun 29, 2025"
-HDL,37,mg/dL,"Nov 8, 2022"
-HDL,20,mg/dL,"Nov 16, 2023"
-HDL,35,mg/dL,"Nov 21, 2024"
-HDL,39,mg/dL,"May 17, 2025"
-HDL,38,mg/dL,"Nov 3, 2020"
-HDL,47,mg/dL,"Feb 22, 2025"
-HDL,37,mg/dL,"Nov 5, 2021"
-HDL,48,mg/dL,"Mar 8, 2025"
-HDL,43,mg/dL,"Feb 28, 2025"
-HDL,44,mg/dL,"Apr 7, 2025"
-Hips,43,in,"Jan 29, 2025"
-Hips,40,in,"Apr 1, 2025"
-Hips,40.5,in,"Mar 2, 2025"
-Ketone,2.2,mmol/L,"Feb 9, 2025"
-Ketone,1.8,mmol/L,"Feb 6, 2025"
-Ketone,1,mmol/L,"Feb 23, 2025"
-Ketone,1.8,mmol/L,"Feb 17, 2025"
-Ketone,1.1,mmol/L,"Feb 8, 2025"
-Ketone,1,mmol/L,"Feb 16, 2025"
-Ketone,0.8,mmol/L,"Feb 22, 2025"
-LDL,114,mg/dL,"Nov 5, 2021"
-LDL,62,mg/dL,"Jun 29, 2025"
-LDL,142,mg/dL,"Jun 19, 2025"
-LDL,85,mg/dL,"May 3, 2025"
-LDL,76,mg/dL,"Apr 7, 2025"
-LDL,131,mg/dL,"Nov 21, 2024"
-LDL,105,mg/dL,"Mar 8, 2025"
-LDL,145,mg/dL,"Nov 8, 2022"
-LDL,103,mg/dL,"May 17, 2025"
-LDL,123,mg/dL,"Feb 28, 2025"
-LDL,59,mg/dL,"Feb 22, 2025"
-LDL,65,mg/dL,"Apr 7, 2025"
-LDL,43,mg/dL,"Feb 19, 2025"
-LDL,45,mg/dL,"Nov 16, 2023"
-Left Grip,89,lbs,"Mar 31, 2025"
-Neck,17.5,in,"Jan 29, 2025"
-Neck,17,in,"Mar 2, 2025"
-Neck,16.5,in,"Apr 1, 2025"
-Pulse,105,Beats/Min,"Feb 14, 2025"
-Pulse,87,Beats/Min,"Feb 16, 2025"
-Pulse,80,Beats/Min,"Feb 19, 2025"
-Pulse,67,Beats/Min,"Feb 23, 2025"
-Pulse,66,Beats/Min,"Feb 22, 2025"
-Pulse,77,Beats/Min,"Feb 15, 2025"
-Right Grip,89,lbs ,"Mar 31, 2025"
-Systolic,117,mmHg,"Feb 22, 2025"
-Systolic,113,mmHg,"Feb 19, 2025"
-Systolic,114,mmHg,"Feb 23, 2025"
-Systolic,101,mmHg,"Feb 16, 2025"
-Systolic,98,mmHg,"Feb 14, 2025"
-Systolic,106,mmHg,"Feb 15, 2025"
-TC-HDL,122,mm/gL,"Mar 8, 2025"
-TC-HDL,76,mm/gL,"Jun 29, 2025"
-TC-HDL,144,mm/gL,"Nov 5, 2021"
-TC-HDL,168,mm/gL,"Nov 8, 2022"
-TC-HDL,71,mm/gL,"Feb 19, 2025"
-TC-HDL,92,mm/gL,"Apr 16, 2025"
-TC-HDL,98,mm/gL,"May 3, 2025"
-TC-HDL,141,mm/gL,"Feb 28, 2025"
-TC-HDL,155,mm/gL,"Jun 19, 2025"
-TC-HDL,156,mm/gL,"Nov 21, 2024"
-TC-HDL,76,mm/gL,"Feb 22, 2025"
-TC-HDL,92,mm/gL,"Apr 7, 2025"
-TC-HDL,134,mm/gL,"Nov 16, 2023"
-TC-HDL,82,mm/gL,"Apr 7, 2025"
-TC-HDL,123,mm/gL,"May 17, 2025"
-TC/HDL,3.3,,"Apr 7, 2025"
-TC/HDL,2.86,,"Apr 7, 2025"
-TC/HDL,3.51,,"May 3, 2025"
-TC/HDL,3.54,,"Mar 8, 2025"
-TC/HDL,4.15,,"May 17, 2025"
-TC/HDL,4.28,,"Feb 28, 2025"
-TC/HDL,4.9,,"Nov 5, 2021"
-TC/HDL,2.55,,"Jun 29, 2025"
-TC/HDL,5.5,,"Nov 8, 2022"
-TC/HDL,7.7,,"Nov 16, 2023"
-TC/HDL,5.5,,"Nov 21, 2024"
-TC/HDL,2.62,,"Feb 22, 2025"
-TC/HDL,2.8,,"Feb 19, 2025"
-TC/HDL,3.87,,"Jun 19, 2025"
-Cholesterol,205,mg/dL,"Nov 8, 2022"
-Cholesterol,162,mg/dL,"May 17, 2025"
-Cholesterol,209,mg/dL,"Jun 19, 2025"
-Cholesterol,137,mg/dL,"May 3, 2025"
-Cholesterol,132,mg/dL,"Apr 7, 2025"
-Cholesterol,191,mg/dL,"Nov 21, 2024"
-Cholesterol,154,mg/dL,"Nov 16, 2023"
-Cholesterol,125,mg/dL,"Jun 29, 2025"
-Cholesterol,184,mg/dL,"Feb 28, 2025"
-Cholesterol,182,mg/dL,"Nov 3, 2020"
-Cholesterol,123,mg/dL,"Feb 22, 2025"
-Cholesterol,181,mg/dL,"Nov 5, 2021"
-Cholesterol,110,mg/dL,"Feb 19, 2025"
-Cholesterol,200,mg/dL,"Nov 7, 2017"
-Cholesterol,170,mg/dL,"Mar 8, 2025"
-Triglycerides,67,mg/dL,"May 3, 2025"
-Triglycerides,65,mg/dL,"Jun 19, 2025"
-Triglycerides,88,mg/dL,"Feb 28, 2025"
-Triglycerides,97,mg/dL,"May 17, 2025"
-Triglycerides,86,mg/dL,"Apr 7, 2025"
-Triglycerides,104,mg/dL,"Nov 16, 2023"
-Triglycerides,126,mg/dL,"Nov 21, 2024"
-Triglycerides,71,mg/dL,"Jun 29, 2025"
-Triglycerides,124,mg/dL,"Nov 3, 2020"
-Triglycerides,118,mg/dL,"Nov 8, 2022"
-Triglycerides,75,mg/dL,"Apr 7, 2025"
-Triglycerides,152,mg/dL,"Nov 5, 2021"
-Triglycerides,82,mg/dL,"Mar 8, 2025"
-Triglycerides,85,mg/dL,"Feb 22, 2025"
-Triglycerides,138,mg/dL,"Nov 7, 2017"
-Triglycerides,139,mg/dL,"Feb 19, 2025"
-Waist,38,in,"Jan 29, 2025"
-Waist,34,in,"Jan 29, 2025"
-Waist,36,in,"Jan 29, 2025"
-Waist,36,in,"Jan 29, 2025"
-Waist,42,in,"Jan 26, 2025"
-Waist,34,in,"Jan 29, 2025"
-Waist,35,in,"Jan 29, 2025"
-Waist,40,in,"Jan 29, 2025"
-Waist,33,in,"Jan 29, 2025"
-Waist,40,in,"Jan 29, 2025"
-Waist,35,in,"Jan 29, 2025"
-Waist,39,in,"Jan 29, 2025"
-Waist,37.5,in,"May 13, 2025"
-Waist,41,in,"Feb 13, 2025"
-Waist,42,in,"Jan 29, 2025"
-Waist,33,in,"Jan 29, 2025"
-Waist,39,in,"Jan 29, 2025"
-Waist,40,in,"Jan 29, 2025"
-Waist,34,in,"Jan 29, 2025"
-Waist,41.5,in,"Feb 9, 2025"
-Waist,42,in,"Jan 29, 2025"
-Waist,38.5,in,"Apr 29, 2025"
-Waist,40,in,"Apr 1, 2025"
-Waist,39,in,"Jan 29, 2025"
-Waist,42,in,"Jan 29, 2025"
-Waist,33,in,"Jan 29, 2025"
-Waist,36,in,"Jan 29, 2025"
-Waist,35,in,"Jan 29, 2025"
-Waist,35,in,"Jan 29, 2025"
-Waist,39,in,"Jan 29, 2025"
-Waist,42,in,"Jan 29, 2025"
-Weight,183.8,lbs,"Mar 3, 2025"
-Weight,207.6,lbs,"Jan 4, 2025"
-Weight,206.4,lbs,"Jan 5, 2025"
-Weight,208.6,lbs,"Jan 3, 2025"
-Weight,186.2,lbs,"Feb 28, 2025"
-Weight,167.2,lbs,"Jun 3, 2025"
-Weight,172.6,lbs,"Apr 29, 2025"
-Weight,168,lbs,"Jun 2, 2025"
-Weight,195.8,lbs,"Feb 1, 2025"
-Weight,205.8,lbs,"Jan 6, 2025"
-Weight,197.8,lbs,"Jan 26, 2025"
-Weight,203,lbs,"Jan 11, 2025"
-Weight,178.2,lbs,"Apr 8, 2025"
-Weight,199.6,lbs,"Jan 24, 2025"
-Weight,187.2,lbs,"Feb 27, 2025"
-Weight,199.8,lbs,"Jan 23, 2025"
-Weight,216,lbs,"Dec 29, 2024"
-Weight,212,lbs,"Dec 30, 2024"
-Weight,201.2,lbs,"Jan 17, 2025"
-Weight,192,lbs,"Feb 10, 2025"
-Weight,209,lbs,"Jan 2, 2025"
-Weight,195.8,lbs,"Jan 30, 2025"
-Weight,203,lbs,"Jan 13, 2025"
-Weight,188.2,lbs,"Feb 16, 2025"
-Weight,199,lbs,"Jan 25, 2025"
-Weight,203,lbs,"Jan 12, 2025"
-Weight,169.6,lbs,"May 13, 2025"
-Weight,201,lbs,"Jan 20, 2025"
-Weight,199.8,lbs,"Jan 21, 2025"
-Weight,173.8,lbs,"Apr 28, 2025"
-Weight,180.8,lbs,"Mar 26, 2025"
-Weight,185.4,lbs,"Mar 1, 2025"
-Weight,196.8,lbs,"Jan 28, 2025"
-Weight,199.8,lbs,"Jan 22, 2025"
-Weight,175,lbs,"Apr 27, 2025"
-Weight,209.4,lbs,"Jan 1, 2025"
-Weight,203.4,lbs,"Jan 10, 2025"
-Weight,195.8,lbs,"Jan 31, 2025"
-Weight,211.8,lbs,"Dec 31, 2024"
-Weight,197.8,lbs,"Jan 27, 2025"
-Weight,170.9,lbs,"May 10, 2025"
-Weight,193.6,lbs,"Feb 9, 2025"
-Weight,201,lbs,"Jan 19, 2025"
-Weight,195.8,lbs,"Feb 2, 2025"
-Weight,205.2,lbs,"Jan 7, 2025"
-Weight,175.4,lbs,"Apr 18, 2025"
-Weight,201,lbs,"Jan 18, 2025"
-Weight,203.8,lbs,"Jan 9, 2025"
-Weight,177.2,lbs,"Apr 12, 2025"
-Weight,165.7,lbs,"Jun 5, 2025"
-Weight,190.8,lbs,"Feb 11, 2025"
-Weight,189.6,lbs,"Feb 15, 2025"
-Weight,172.2,lbs,"May 6, 2025"
-Weight,161.3,lbs,"Jul 1, 2025"
-Weight,162.8,lbs,"Jun 30, 2025"
-Weight,195.8,lbs,"Jan 29, 2025"
-Weight,183,lbs,"Mar 9, 2025"
-Weight,201.6,lbs,"Jan 16, 2025"
-Weight,202.2,lbs,"Jan 15, 2025"
-Weight,203,lbs,"Jan 14, 2025"
-Weight,204.6,lbs,"Jan 8, 2025"
+Name,Value,Units,Date,Note
+Body Fat,32.0,%,2025-04-04 00:00:00,
+Diastolic,69.0,mmHg,2025-02-23 00:00:00,
+Diastolic,68.0,mmHg,2025-02-19 00:00:00,
+Diastolic,66.0,mmHg,2025-02-15 00:00:00,
+Diastolic,67.0,mmHg,2025-02-14 00:00:00,
+Diastolic,72.0,mmHg,2025-02-22 00:00:00,
+Diastolic,63.0,mmHg,2025-02-16 00:00:00,
+Glucose,90.0,mg/dL,2025-02-16 00:00:00,
+Glucose,93.0,mg/dL,2025-02-06 00:00:00,
+Glucose,77.0,mg/dL,2025-02-17 00:00:00,
+Glucose,84.0,mg/dL,2025-02-22 00:00:00,
+Glucose,79.0,mg/dL,2025-02-23 00:00:00,
+Glucose,79.0,mg/dL,2025-02-09 00:00:00,
+Glucose,75.0,mg/dL,2025-02-08 00:00:00,
+HDL,40.0,mg/dL,2017-11-07 00:00:00,
+HDL,39.0,mg/dL,2025-02-19 00:00:00,
+HDL,54.0,mg/dL,2025-06-19 00:00:00,
+HDL,39.0,mg/dL,2025-05-03 00:00:00,
+HDL,49.0,mg/dL,2025-06-29 00:00:00,
+HDL,37.0,mg/dL,2022-11-08 00:00:00,
+HDL,20.0,mg/dL,2023-11-16 00:00:00,
+HDL,35.0,mg/dL,2024-11-21 00:00:00,
+HDL,39.0,mg/dL,2025-05-17 00:00:00,
+HDL,38.0,mg/dL,2020-11-03 00:00:00,
+HDL,47.0,mg/dL,2025-02-22 00:00:00,
+HDL,37.0,mg/dL,2021-11-05 00:00:00,
+HDL,48.0,mg/dL,2025-03-08 00:00:00,
+HDL,43.0,mg/dL,2025-02-28 00:00:00,
+HDL,44.0,mg/dL,2025-04-07 00:00:00,
+Hips,43.0,in,2025-01-29 00:00:00,
+Hips,40.0,in,2025-04-01 00:00:00,
+Hips,40.5,in,2025-03-02 00:00:00,
+Ketone,2.2,mmol/L,2025-02-09 00:00:00,
+Ketone,1.8,mmol/L,2025-02-06 00:00:00,
+Ketone,1.0,mmol/L,2025-02-23 00:00:00,
+Ketone,1.8,mmol/L,2025-02-17 00:00:00,
+Ketone,1.1,mmol/L,2025-02-08 00:00:00,
+Ketone,1.0,mmol/L,2025-02-16 00:00:00,
+Ketone,0.8,mmol/L,2025-02-22 00:00:00,
+Dr. Boz Ratio,77.0,,2025-02-23 00:00:00,
+Dr. Boz Ratio,104.0,,2025-02-22 00:00:00,
+Dr. Boz Ratio,41.0,,2025-02-17 00:00:00,
+Dr. Boz Ratio,90.0,,2025-02-16 00:00:00,
+Dr. Boz Ratio,34.0,,2025-02-09 00:00:00,
+Dr. Boz Ratio,67.0,,2025-02-08 00:00:00,
+Dr. Boz Ratio,50.0,,2025-02-06 00:00:00,
+LDL,114.0,mg/dL,2021-11-05 00:00:00,
+LDL,62.0,mg/dL,2025-06-29 00:00:00,
+LDL,142.0,mg/dL,2025-06-19 00:00:00,
+LDL,85.0,mg/dL,2025-05-03 00:00:00,
+LDL,76.0,mg/dL,2025-04-07 00:00:00,
+LDL,131.0,mg/dL,2024-11-21 00:00:00,
+LDL,105.0,mg/dL,2025-03-08 00:00:00,
+LDL,145.0,mg/dL,2022-11-08 00:00:00,
+LDL,103.0,mg/dL,2025-05-17 00:00:00,
+LDL,123.0,mg/dL,2025-02-28 00:00:00,
+LDL,59.0,mg/dL,2025-02-22 00:00:00,
+LDL,65.0,mg/dL,2025-04-07 00:00:00,
+LDL,43.0,mg/dL,2025-02-19 00:00:00,
+LDL,45.0,mg/dL,2023-11-16 00:00:00,
+Left Grip,89.0,lbs,2025-03-31 00:00:00,
+Neck,17.5,in,2025-01-29 00:00:00,
+Neck,17.0,in,2025-03-02 00:00:00,
+Neck,16.5,in,2025-04-01 00:00:00,
+Pulse,75.0,Beats/Min,2025-02-14 00:00:00,
+Pulse,87.0,Beats/Min,2025-02-16 00:00:00,
+Pulse,80.0,Beats/Min,2025-02-19 00:00:00,
+Pulse,67.0,Beats/Min,2025-02-23 00:00:00,
+Pulse,66.0,Beats/Min,2025-02-22 00:00:00,
+Pulse,77.0,Beats/Min,2025-02-15 00:00:00,
+Right Grip,89.0,lbs ,2025-03-31 00:00:00,
+Systolic,117.0,mmHg,2025-02-22 00:00:00,
+Systolic,113.0,mmHg,2025-02-19 00:00:00,
+Systolic,114.0,mmHg,2025-02-23 00:00:00,
+Systolic,101.0,mmHg,2025-02-16 00:00:00,
+Systolic,95.0,mmHg,2025-02-14 00:00:00,
+Systolic,106.0,mmHg,2025-02-15 00:00:00,
+TC-HDL,122.0,mm/gL,2025-03-08 00:00:00,
+TC-HDL,76.0,mm/gL,2025-06-29 00:00:00,
+TC-HDL,144.0,mm/gL,2021-11-05 00:00:00,
+TC-HDL,168.0,mm/gL,2022-11-08 00:00:00,
+TC-HDL,71.0,mm/gL,2025-02-19 00:00:00,
+TC-HDL,92.0,mm/gL,2025-04-16 00:00:00,
+TC-HDL,98.0,mm/gL,2025-05-03 00:00:00,
+TC-HDL,141.0,mm/gL,2025-02-28 00:00:00,
+TC-HDL,155.0,mm/gL,2025-06-19 00:00:00,
+TC-HDL,156.0,mm/gL,2024-11-21 00:00:00,
+TC-HDL,76.0,mm/gL,2025-02-22 00:00:00,
+TC-HDL,92.0,mm/gL,2025-04-07 00:00:00,
+TC-HDL,134.0,mm/gL,2023-11-16 00:00:00,
+TC-HDL,82.0,mm/gL,2025-04-07 00:00:00,
+TC-HDL,123.0,mm/gL,2025-05-17 00:00:00,
+TC/HDL,3.3,,2025-04-07 00:00:00,
+TC/HDL,2.86,,2025-04-07 00:00:00,
+TC/HDL,3.51,,2025-05-03 00:00:00,
+TC/HDL,3.54,,2025-03-08 00:00:00,
+TC/HDL,4.15,,2025-05-17 00:00:00,
+TC/HDL,4.28,,2025-02-28 00:00:00,
+TC/HDL,4.9,,2021-11-05 00:00:00,
+TC/HDL,2.55,,2025-06-29 00:00:00,
+TC/HDL,5.5,,2022-11-08 00:00:00,
+TC/HDL,7.7,,2023-11-16 00:00:00,
+TC/HDL,5.5,,2024-11-21 00:00:00,
+TC/HDL,2.62,,2025-02-22 00:00:00,
+TC/HDL,2.8,,2025-02-19 00:00:00,
+TC/HDL,3.87,,2025-06-19 00:00:00,
+Cholesterol,205.0,mg/dL,2022-11-08 00:00:00,
+Cholesterol,162.0,mg/dL,2025-05-17 00:00:00,
+Cholesterol,209.0,mg/dL,2025-06-19 00:00:00,
+Cholesterol,137.0,mg/dL,2025-05-03 00:00:00,
+Cholesterol,132.0,mg/dL,2025-04-07 00:00:00,
+Cholesterol,191.0,mg/dL,2024-11-21 00:00:00,
+Cholesterol,154.0,mg/dL,2023-11-16 00:00:00,
+Cholesterol,125.0,mg/dL,2025-06-29 00:00:00,
+Cholesterol,184.0,mg/dL,2025-02-28 00:00:00,
+Cholesterol,182.0,mg/dL,2020-11-03 00:00:00,
+Cholesterol,123.0,mg/dL,2025-02-22 00:00:00,
+Cholesterol,181.0,mg/dL,2021-11-05 00:00:00,
+Cholesterol,110.0,mg/dL,2025-02-19 00:00:00,
+Cholesterol,200.0,mg/dL,2017-11-07 00:00:00,
+Cholesterol,170.0,mg/dL,2025-03-08 00:00:00,
+Triglycerides,67.0,mg/dL,2025-05-03 00:00:00,
+Triglycerides,65.0,mg/dL,2025-06-19 00:00:00,
+Triglycerides,88.0,mg/dL,2025-02-28 00:00:00,
+Triglycerides,97.0,mg/dL,2025-05-17 00:00:00,
+Triglycerides,86.0,mg/dL,2025-04-07 00:00:00,
+Triglycerides,104.0,mg/dL,2023-11-16 00:00:00,
+Triglycerides,126.0,mg/dL,2024-11-21 00:00:00,
+Triglycerides,71.0,mg/dL,2025-06-29 00:00:00,
+Triglycerides,124.0,mg/dL,2020-11-03 00:00:00,
+Triglycerides,118.0,mg/dL,2022-11-08 00:00:00,
+Triglycerides,75.0,mg/dL,2025-04-07 00:00:00,
+Triglycerides,152.0,mg/dL,2021-11-05 00:00:00,
+Triglycerides,82.0,mg/dL,2025-03-08 00:00:00,
+Triglycerides,85.0,mg/dL,2025-02-22 00:00:00,
+Triglycerides,138.0,mg/dL,2017-11-07 00:00:00,
+Triglycerides,139.0,mg/dL,2025-02-19 00:00:00,
+Waist,38.0,in,2025-01-29 00:00:00,
+Waist,34.0,in,2025-01-29 00:00:00,
+Waist,36.0,in,2025-01-29 00:00:00,
+Waist,36.0,in,2025-01-29 00:00:00,
+Waist,42.0,in,2025-01-26 00:00:00,
+Waist,34.0,in,2025-01-29 00:00:00,
+Waist,35.0,in,2025-01-29 00:00:00,
+Waist,40.0,in,2025-01-29 00:00:00,
+Waist,33.0,in,2025-01-29 00:00:00,
+Waist,40.0,in,2025-01-29 00:00:00,
+Waist,35.0,in,2025-01-29 00:00:00,
+Waist,39.0,in,2025-01-29 00:00:00,
+Waist,37.5,in,2025-05-13 00:00:00,
+Waist,41.0,in,2025-02-13 00:00:00,
+Waist,42.0,in,2025-01-29 00:00:00,
+Waist,33.0,in,2025-01-29 00:00:00,
+Waist,39.0,in,2025-01-29 00:00:00,
+Waist,40.0,in,2025-01-29 00:00:00,
+Waist,34.0,in,2025-01-29 00:00:00,
+Waist,41.5,in,2025-02-09 00:00:00,
+Waist,42.0,in,2025-01-29 00:00:00,
+Waist,38.5,in,2025-04-29 00:00:00,
+Waist,40.0,in,2025-04-01 00:00:00,
+Waist,39.0,in,2025-01-29 00:00:00,
+Waist,42.0,in,2025-01-29 00:00:00,
+Waist,33.0,in,2025-01-29 00:00:00,
+Waist,36.0,in,2025-01-29 00:00:00,
+Waist,35.0,in,2025-01-29 00:00:00,
+Waist,35.0,in,2025-01-29 00:00:00,
+Waist,39.0,in,2025-01-29 00:00:00,
+Waist,42.0,in,2025-01-29 00:00:00,
+Weight,183.8,lbs,2025-03-03 00:00:00,
+Weight,207.6,lbs,2025-01-04 00:00:00,
+Weight,206.4,lbs,2025-01-05 00:00:00,
+Weight,208.6,lbs,2025-01-03 00:00:00,
+Weight,186.2,lbs,2025-02-28 00:00:00,
+Weight,167.2,lbs,2025-06-03 00:00:00,
+Weight,172.6,lbs,2025-04-29 00:00:00,
+Weight,168.0,lbs,2025-06-02 00:00:00,
+Weight,195.8,lbs,2025-02-01 00:00:00,
+Weight,205.8,lbs,2025-01-06 00:00:00,
+Weight,197.8,lbs,2025-01-26 00:00:00,
+Weight,203.0,lbs,2025-01-11 00:00:00,
+Weight,178.2,lbs,2025-04-08 00:00:00,
+Weight,199.6,lbs,2025-01-24 00:00:00,
+Weight,187.2,lbs,2025-02-27 00:00:00,
+Weight,199.8,lbs,2025-01-23 00:00:00,
+Weight,216.0,lbs,2024-12-29 00:00:00,
+Weight,212.0,lbs,2024-12-30 00:00:00,
+Weight,201.2,lbs,2025-01-17 00:00:00,
+Weight,192.0,lbs,2025-02-10 00:00:00,
+Weight,209.0,lbs,2025-01-02 00:00:00,
+Weight,195.8,lbs,2025-01-30 00:00:00,
+Weight,203.0,lbs,2025-01-13 00:00:00,
+Weight,188.2,lbs,2025-02-16 00:00:00,
+Weight,199.0,lbs,2025-01-25 00:00:00,
+Weight,203.0,lbs,2025-01-12 00:00:00,
+Weight,169.6,lbs,2025-05-13 00:00:00,
+Weight,201.0,lbs,2025-01-20 00:00:00,
+Weight,199.8,lbs,2025-01-21 00:00:00,
+Weight,173.8,lbs,2025-04-28 00:00:00,
+Weight,180.8,lbs,2025-03-26 00:00:00,
+Weight,185.4,lbs,2025-03-01 00:00:00,
+Weight,196.8,lbs,2025-01-28 00:00:00,
+Weight,199.8,lbs,2025-01-22 00:00:00,
+Weight,175.0,lbs,2025-04-27 00:00:00,
+Weight,209.4,lbs,2025-01-01 00:00:00,
+Weight,203.4,lbs,2025-01-10 00:00:00,
+Weight,195.8,lbs,2025-01-31 00:00:00,
+Weight,211.8,lbs,2024-12-31 00:00:00,
+Weight,197.8,lbs,2025-01-27 00:00:00,
+Weight,170.9,lbs,2025-05-10 00:00:00,
+Weight,193.6,lbs,2025-02-09 00:00:00,
+Weight,201.0,lbs,2025-01-19 00:00:00,
+Weight,195.8,lbs,2025-02-02 00:00:00,
+Weight,205.2,lbs,2025-01-07 00:00:00,
+Weight,175.4,lbs,2025-04-18 00:00:00,
+Weight,201.0,lbs,2025-01-18 00:00:00,
+Weight,203.8,lbs,2025-01-09 00:00:00,
+Weight,177.2,lbs,2025-04-12 00:00:00,
+Weight,165.7,lbs,2025-06-05 00:00:00,
+Weight,190.8,lbs,2025-02-11 00:00:00,
+Weight,189.6,lbs,2025-02-15 00:00:00,
+Weight,172.2,lbs,2025-05-06 00:00:00,
+Weight,161.3,lbs,2025-07-01 00:00:00,
+Weight,162.8,lbs,2025-06-30 00:00:00,
+Weight,195.8,lbs,2025-01-29 00:00:00,
+Weight,183.0,lbs,2025-03-09 00:00:00,
+Weight,201.6,lbs,2025-01-16 00:00:00,
+Weight,202.2,lbs,2025-01-15 00:00:00,
+Weight,203.0,lbs,2025-01-14 00:00:00,
+Weight,204.6,lbs,2025-01-08 00:00:00,
+Glucose,102.0,mg/dL,2024-11-21 20:20:00,
+Glucose,75.0,mg/dL,2025-02-24 20:20:00,
+Ketone,2.0,mmol/L,2025-02-24 20:20:00,
+Dr. Boz Ratio,36.0,,2025-02-24 20:20:00,
+Glucose,81.0,mg/dL,2025-02-26 20:20:00,
+Ketone,1.6,mmol/L,2025-02-26 20:20:00,
+Dr. Boz Ratio,50.0,,2025-02-26 20:20:00,
+Glucose,68.0,mg/dL,2025-02-28 20:20:00,
+Ketone,1.8,mmol/L,2025-02-28 20:20:00,
+Dr. Boz Ratio,36.0,,2025-02-28 20:20:00,
+Glucose,76.0,mg/dL,2025-03-01 20:20:00,
+Ketone,2.2,mmol/L,2025-03-01 20:20:00,
+Dr. Boz Ratio,34.0,,2025-03-01 20:20:00,
+Glucose,73.0,mg/dL,2025-03-02 20:20:00,
+Ketone,1.9,mmol/L,2025-03-02 20:20:00,
+Dr. Boz Ratio,38.0,,2025-03-02 20:20:00,
+Glucose,76.0,mg/dL,2025-03-08 20:20:00,
+Ketone,2.1,mmol/L,2025-03-08 20:20:00,
+Dr. Boz Ratio,36.0,,2025-03-08 20:20:00,
+Glucose,87.0,mg/dL,2025-03-24 20:20:00,
+Ketone,1.2,mmol/L,2025-03-24 20:20:00,
+Dr. Boz Ratio,72.0,,2025-03-24 20:20:00,
+Glucose,71.0,mg/dL,2025-03-27 20:20:00,
+Ketone,1.3,mmol/L,2025-03-27 20:20:00,
+Dr. Boz Ratio,54.0,,2025-03-27 20:20:00,
+Glucose,89.0,mg/dL,2025-04-07 20:20:00,
+Ketone,0.3,mmol/L,2025-04-07 20:20:00,
+Dr. Boz Ratio,295.0,,2025-04-07 20:20:00,
+Glucose,88.0,mg/dL,2025-04-21 20:20:00,
+Ketone,2.0,mmol/L,2025-04-21 20:20:00,
+Dr. Boz Ratio,43.0,,2025-04-21 20:20:00,
+Glucose,94.0,mg/dL,2025-05-03 20:20:00,
+Ketone,1.1,mmol/L,2025-05-03 20:20:00,
+Dr. Boz Ratio,85.0,,2025-05-03 20:20:00,
+Glucose,102.0,mg/dL,2025-06-19 20:20:00,
+Ketone,0.4,mmol/L,2025-06-19 20:20:00,
+Dr. Boz Ratio,254.0,,2025-06-19 20:20:00,
+Glucose,70.0,mg/dL,2025-06-29 20:20:00,
+Ketone,1.4,mmol/L,2025-06-29 20:20:00,
+Dr. Boz Ratio,49.0,,2025-06-29 20:20:00,
+Weight,209.0,lbs,2023-11-16 20:20:00,
+BMI,33.72979797979798,,2023-11-16 20:20:00,
+Weight,217.0,lbs,2024-11-21 20:20:00,
+BMI,35.02089072543618,,2024-11-21 20:20:00,
+Diastolic,70.0,mmHg,2023-11-16 20:20:00,
+Systolic,116.0,mmHg,2023-11-16 20:20:00,
+Pulse,76.0,Beats/min,2023-11-16 20:20:00,
+Diastolic,70.0,mmHg,2024-11-21 20:20:00,
+Systolic,100.0,mmHg,2024-11-21 20:20:00,
+Pulse,80.0,Beats/min,2024-11-21 20:20:00,
+Systolic,112.0,mmHg,2025-02-24 20:20:00,
+Diastolic,71.0,mmHg,2025-02-24 20:20:00,
+Pulse,69.0,Beats/min,2025-02-24 20:20:00,
+Systolic,112.0,mmHg,2025-02-25 20:20:00,
+Diastolic,69.0,mmHg,2025-02-25 20:20:00,
+Pulse,73.0,Beats/min,2025-02-25 20:20:00,
+Systolic,116.0,mmHg,2025-02-26 20:20:00,
+Diastolic,76.0,mmHg,2025-02-26 20:20:00,
+Pulse,70.0,Beats/min,2025-02-26 20:20:00,
+Systolic,104.0,mmHg,2025-02-27 20:20:00,
+Diastolic,69.0,mmHg,2025-02-27 20:20:00,
+Pulse,71.0,Beats/min,2025-02-27 20:20:00,
+Systolic,115.0,mmHg,2025-02-28 20:20:00,
+Diastolic,74.0,mmHg,2025-02-28 20:20:00,
+Pulse,75.0,Beats/min,2025-02-28 20:20:00,
+Systolic,110.0,mmHg,2025-03-01 20:20:00,
+Diastolic,68.0,mmHg,2025-03-01 20:20:00,
+Pulse,71.0,Beats/min,2025-03-01 20:20:00,
+Systolic,117.0,mmHg,2025-03-02 20:20:00,
+Diastolic,68.0,mmHg,2025-03-02 20:20:00,
+Pulse,70.0,Beats/min,2025-03-02 20:20:00,
+Systolic,113.0,mmHg,2025-03-03 20:20:00,
+Diastolic,73.0,mmHg,2025-03-03 20:20:00,
+Pulse,71.0,Beats/min,2025-03-03 20:20:00,
+Systolic,101.0,mmHg,2025-03-04 20:20:00,
+Diastolic,64.0,mmHg,2025-03-04 20:20:00,
+Pulse,70.0,Beats/min,2025-03-04 20:20:00,
+Systolic,116.0,mmHg,2025-03-05 20:20:00,
+Diastolic,70.0,mmHg,2025-03-05 20:20:00,
+Pulse,65.0,Beats/min,2025-03-05 20:20:00,
+Systolic,109.0,mmHg,2025-03-06 20:20:00,
+Diastolic,63.0,mmHg,2025-03-06 20:20:00,
+Pulse,70.0,Beats/min,2025-03-06 20:20:00,
+Systolic,116.0,mmHg,2025-03-07 20:20:00,
+Diastolic,67.0,mmHg,2025-03-07 20:20:00,
+Pulse,71.0,Beats/min,2025-03-07 20:20:00,
+Systolic,107.0,mmHg,2025-03-08 20:20:00,
+Diastolic,65.0,mmHg,2025-03-08 20:20:00,
+Pulse,75.0,Beats/min,2025-03-08 20:20:00,
+Systolic,115.0,mmHg,2025-03-09 20:20:00,
+Diastolic,67.0,mmHg,2025-03-09 20:20:00,
+Pulse,64.0,Beats/min,2025-03-09 20:20:00,
+Systolic,118.0,mmHg,2025-03-10 20:20:00,
+Diastolic,67.0,mmHg,2025-03-10 20:20:00,
+Pulse,68.0,Beats/min,2025-03-10 20:20:00,
+Systolic,111.0,mmHg,2025-03-11 20:20:00,
+Diastolic,68.0,mmHg,2025-03-11 20:20:00,
+Pulse,64.0,Beats/min,2025-03-11 20:20:00,
+Systolic,112.0,mmHg,2025-03-21 20:20:00,
+Diastolic,71.0,mmHg,2025-03-21 20:20:00,
+Pulse,68.0,Beats/min,2025-03-21 20:20:00,
+Systolic,118.0,mmHg,2025-03-22 20:20:00,
+Diastolic,70.0,mmHg,2025-03-22 20:20:00,
+Pulse,60.0,Beats/min,2025-03-22 20:20:00,
+Systolic,109.0,mmHg,2025-03-23 20:20:00,
+Diastolic,68.0,mmHg,2025-03-23 20:20:00,
+Pulse,70.0,Beats/min,2025-03-23 20:20:00,
+Systolic,109.0,mmHg,2025-03-26 20:20:00,
+Diastolic,64.0,mmHg,2025-03-26 20:20:00,
+Pulse,92.0,Beats/min,2025-03-26 20:20:00,
+Systolic,104.0,mmHg,2025-03-27 20:20:00,
+Diastolic,65.0,mmHg,2025-03-27 20:20:00,
+Pulse,79.0,Beats/min,2025-03-27 20:20:00,
+Systolic,111.0,mmHg,2025-04-05 20:20:00,
+Diastolic,64.0,mmHg,2025-04-05 20:20:00,
+Pulse,71.0,Beats/min,2025-04-05 20:20:00,
+Systolic,109.0,mmHg,2025-04-21 20:20:00,
+Diastolic,65.0,mmHg,2025-04-21 20:20:00,
+Pulse,64.0,Beats/min,2025-04-21 20:20:00,
+Systolic,115.0,mmHg,2025-04-27 20:20:00,
+Diastolic,69.0,mmHg,2025-04-27 20:20:00,
+Pulse,62.0,Beats/min,2025-04-27 20:20:00,
+Systolic,112.0,mmHg,2025-05-03 20:20:00,
+Diastolic,67.0,mmHg,2025-05-03 20:20:00,
+Pulse,64.0,Beats/min,2025-05-03 20:20:00,
+Systolic,117.0,mmHg,2025-05-05 20:20:00,
+Diastolic,66.0,mmHg,2025-05-05 20:20:00,
+Pulse,73.0,Beats/min,2025-05-05 20:20:00,
+Systolic,116.0,mmHg,2025-05-11 20:20:00,
+Diastolic,68.0,mmHg,2025-05-11 20:20:00,
+Pulse,68.0,Beats/min,2025-05-11 20:20:00,
+Systolic,114.0,mmHg,2025-05-17 20:20:00,
+Diastolic,70.0,mmHg,2025-05-17 20:20:00,
+Pulse,63.0,Beats/min,2025-05-17 20:20:00,
+Systolic,112.0,mmHg,2025-05-24 20:20:00,
+Diastolic,64.0,mmHg,2025-05-24 20:20:00,
+Pulse,81.0,Beats/min,2025-05-24 20:20:00,
+Systolic,115.0,mmHg,2025-05-28 20:20:00,
+Diastolic,72.0,mmHg,2025-05-28 20:20:00,
+Pulse,89.0,Beats/min,2025-05-28 20:20:00,
+Systolic,106.0,mmHg,2025-06-19 20:20:00,
+Diastolic,68.0,mmHg,2025-06-19 20:20:00,
+Pulse,62.0,Beats/min,2025-06-19 20:20:00,
+Systolic,116.0,mmHg,2025-06-29 20:20:00,
+Diastolic,64.0,mmHg,2025-06-29 20:20:00,
+Pulse,57.0,Beats/min,2025-06-29 20:20:00,
